@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #007bff;">
+  <div class="container-fluid">
+    <!-- Logo và nút để mở/đóng navbar trên màn hình nhỏ -->
+    <a class="navbar-brand text-white" href="#">Logo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav nav-pills">
+        <!-- Lặp qua các item trong navItems -->
+        <li *ngFor="let item of navItems" class="nav-item " [ngClass]="{'dropdown': item.hasDropdown}">
+          <a class="nav-link text-white fw-bold" [href]="item.route" *ngIf="!item.hasDropdown">
+            {{ item.label }}
+          </a>
+
+          <!-- Dropdown nếu có -->
+          <a *ngIf="item.hasDropdown" class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown"
+            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ item.label }}
+          </a>
+
+          <!-- Dropdown menu -->
+          <ul *ngIf="item.hasDropdown" class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li *ngFor="let dropdownItem of item.dropdownItems">
+              <a class="dropdown-item" [href]="dropdownItem.route">{{ dropdownItem.label }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <button class="btn btn-primary ms-3">
+      <i class="bi bi-cart"></i> Bán hàng
+    </button>
+  </div>
+</nav>
