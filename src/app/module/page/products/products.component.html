@@ -1,0 +1,40 @@
+<button type="button" class="btn btn-primary mb-3" (click)="toAddProduct()">
+  Thêm Sản Phẩm
+</button>
+<nz-table #basicTable [nzData]="pagedData" [nzBordered]="true">
+  <thead>
+    <tr>
+      <th nzWidth="50px">
+        <label nz-checkbox [(ngModel)]="isChecked" (ngModelChange)="toggleCheckAll()"></label>
+      </th>
+      <th nzWidth="50px">STT</th> <!-- Thay đổi tiêu đề cột -->
+      <th nzWidth="100px">Tên hàng</th>
+      <th nzWidth="100px">Giá bán</th>
+      <th nzWidth="100px">Giá vốn</th>
+      <th nzWidth="100px">Tồn kho</th>
+      <th nzWidth="100px">Khách đặt</th>
+      <th nzWidth="150px">Thời gian tạo</th>
+      <th nzWidth="150px">Dự kiến hết hàng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of pagedData; let i = index">
+      <td>
+        <label nz-checkbox [(ngModel)]="item.checked"></label>
+      </td>
+      <td>{{ i + 1 }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.price }}</td>
+      <td>{{ item.cost }}</td>
+      <td>
+        <!-- So sánh chính xác giá trị 'unitType' -->
+        <span *ngIf="item.unitType === 'quantity'">{{ item.quantity }} Sản phẩm</span>
+        <span *ngIf="item.unitType === 'weight'">{{ item.weight }} kg</span>
+      </td>
+
+      <td>0</td>
+      <td>{{ item.createdAt }}</td>
+      <td>{{ item.updatedAt }}</td>
+    </tr>
+  </tbody>
+</nz-table>

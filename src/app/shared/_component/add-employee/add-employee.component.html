@@ -1,0 +1,67 @@
+<div class="container mt-5">
+  <div class="card p-4 shadow-lg">
+    <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+      <h1 class="h5">Thêm Nhân Viên</h1>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #employeeForm="ngForm">
+      <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+          <label class="form-label" for="name">Tên</label>
+          <input type="text" id="name" class="form-control" required [(ngModel)]="employee.name" name="name"
+            #name="ngModel">
+          <div *ngIf="name.invalid && name.touched" class="text-danger">Tên là bắt buộc.</div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+          <label class="form-label" for="email">Email</label>
+          <input type="email" id="email" class="form-control" required [(ngModel)]="employee.email" name="email"
+            #email="ngModel">
+          <div *ngIf="email.invalid && email.touched" class="text-danger">Email là bắt buộc và phải hợp lệ.</div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+          <label class="form-label" for="phone">Số điện thoại</label>
+          <input type="text" id="phone" class="form-control" required [(ngModel)]="employee.phone" name="phone"
+            #phone="ngModel">
+          <div *ngIf="phone.invalid && phone.touched" class="text-danger">Số điện thoại là bắt buộc.</div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+          <label class="form-label" for="position">Chức vụ</label>
+          <input type="text" id="position" class="form-control" required [(ngModel)]="employee.position" name="position"
+            #position="ngModel">
+          <div *ngIf="position.invalid && position.touched" class="text-danger">Chức vụ là bắt buộc.</div>
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+          <label class="form-label" for="address">Địa chỉ</label>
+          <input type="text" id="address" class="form-control" [(ngModel)]="employee.address" name="address">
+        </div>
+
+        <div class="col-12 col-md-6 mb-3">
+          <label class="form-label" for="status">Trạng thái</label>
+          <select class="form-control" [(ngModel)]="employee.status" name="status">
+            <option value="active">Hoạt động</option>
+            <option value="inactive">Không hoạt động</option>
+            <option value="leave">Nghỉ phép</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end mt-5">
+        <button (click)="cancel()" class="btn btn-dark me-2">
+          <i class="fas fa-times me-2"></i>
+          Hủy
+        </button>
+        <button type="submit" class="btn btn-success me-2" [disabled]="employeeForm.invalid">
+          <i class="fas fa-save me-2"></i>
+          Thêm Nhân Viên
+        </button>
+      </div>
+    </form>
+
+    <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+  </div>
+</div>

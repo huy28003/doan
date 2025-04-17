@@ -6,13 +6,13 @@ export interface NavItem {
 }
 
 export const NAVBAR_ITEMS: NavItem[] = [
-  { label: 'Tổng quan', route: 'test', hasDropdown: false },
+  { label: 'Tổng quan', route: '', hasDropdown: false },
   {
     label: 'Hàng hóa',
     route: '#',
     hasDropdown: true,
     dropdownItems: [
-      { label: 'Danh sách hàng hóa', route: '#' },
+      { label: 'Danh sách hàng hóa', route: 'product' },
       { label: 'Thiết lập giá', route: '#' },
       { label: 'Kiểm kho', route: '#' },
       { label: 'Xuất Hủy', route: '#' },
@@ -34,7 +34,7 @@ export const NAVBAR_ITEMS: NavItem[] = [
     ],
   },
   { label: 'Khách hàng', route: 'test', hasDropdown: false },
-  { label: 'Nhân viên', route: '#', hasDropdown: false },
+  { label: 'Nhân viên', route: 'employee', hasDropdown: false },
   { label: 'Sổ quỹ', route: '#', hasDropdown: false },
   { label: 'Phân tích', route: '#', hasDropdown: false },
   { label: 'Bán online', route: '#', hasDropdown: false },

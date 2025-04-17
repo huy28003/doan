@@ -1,0 +1,31 @@
+<!-- Bảng dữ liệu -->
+<button type="button" class="btn btn-primary mb-3 ms-2 mt-3" (click)="toAddEmployyee()">
+  Thêm Nhân Viên
+</button>
+<nz-table #basicTable [nzData]="paginatedData" [nzBordered]="true" class="mt-5">
+  <thead>
+    <tr>
+      <th nzWidth="5%">STT</th> <!-- STT với tỷ lệ phần trăm -->
+      <th nzWidth="15%">Chức Vụ nhân viên</th> <!-- Mã nhân viên với tỷ lệ phần trăm -->
+      <th nzWidth="15%">Tên nhân viên</th> <!-- Mã chấm công với tỷ lệ phần trăm -->
+      <th nzWidth="10%">Số điện thoại</th> <!-- Tên nhân viên với tỷ lệ phần trăm -->
+      <th nzWidth="20%">Email</th> <!-- Số điện thoại với tỷ lệ phần trăm -->
+      <th nzWidth="20%">Trạng Thái</th> <!-- Email với tỷ lệ phần trăm -->
+      <th nzWidth="20%">Địa Chỉ</th> <!-- Trạng thái với tỷ lệ phần trăm -->
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data; let i = index">
+      <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+      <td>{{ data.position }}</td> <!-- Mã chấm công sẽ là vị trí -->
+      <td>{{ data.name }}</td> <!-- Tên nhân viên -->
+      <td>{{ data.phone }}</td> <!-- Số điện thoại -->
+      <td>{{ data.email }}</td> <!-- Số CMND/CCCD là email -->
+      <td>{{ data.status }}</td> <!-- Trạng thái nhân viên -->
+      <td>{{ data.address }}</td> <!-- Địa chỉ là ghi chú -->
+    </tr>
+  </tbody>
+</nz-table>
+
+<!-- Phân trang -->

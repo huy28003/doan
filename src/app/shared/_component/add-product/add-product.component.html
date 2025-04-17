@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="card p-4 shadow-lg">
+    <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+      <h1 class="h5">Thêm hàng</h1>
+
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6 mb-3">
+        <label class="form-label">Tên hàng</label>
+        <input [(ngModel)]="product.name" class="form-control" type="text" />
+      </div>
+      <div class="col-12 col-md-6 mb-3">
+        <label class="form-label">Giá bán</label>
+        <input [(ngModel)]="product.price" class="form-control" type="number" />
+      </div>
+      <div class="col-12 col-md-6 mb-3">
+        <label class="form-label">Giá vốn</label>
+        <input [(ngModel)]="product.cost" class="form-control" type="number" />
+      </div>
+      <div class="col-12 col-md-6 mb-3">
+        <label class="form-label">Tồn kho</label>
+        <input [(ngModel)]="product.quantity" class="form-control" type="number" />
+      </div>
+      <div class="col-12 col-md-6 mb-3">
+        <label class="form-label">Nhóm hàng</label>
+        <select [(ngModel)]="product.category" class="form-select">
+          <option *ngFor="let category of filteredCategories" [value]="category._id">
+            {{ category.name }} <!-- Hiển thị tên danh mục -->
+          </option>
+        </select>
+      </div>
+      <div class="col-12 col-md-6 mb-3">
+        <label class="form-label">Mô tả</label>
+        <textarea [(ngModel)]="product.description" class="form-control"></textarea>
+      </div>
+    </div>
+
+
+    <div class="d-flex justify-content-end mt-5">
+      <button (click)="cancel()" class="btn btn-dark me-2">
+        <i class="fas fa-save me-2"></i>
+        Hủy
+      </button>
+      <button (click)="onSubmit()" class="btn btn-success me-2">
+        <i class="fas fa-save me-2"></i>
+        Lưu
+      </button>
+    </div>
+  </div>
+</div>
